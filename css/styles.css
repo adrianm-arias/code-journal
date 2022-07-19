@@ -1,0 +1,80 @@
+body {
+  font-family: "Proza Libre", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 2rem;
+  background-color: #f0f0f0;
+}
+
+.background-purple {
+  background-color: #562b81;
+  padding: 0.4rem 0;
+}
+
+.logo {
+  color: white;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 27px;
+  text-decoration: none;
+}
+
+img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.placeholder-img {
+  height: 250px;
+}
+
+@media screen and (min-width: 768px) {
+  .placeholder-img {
+    height: 350px;
+  }
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-weight: 600;
+}
+
+.button-save {
+  margin-left: auto;
+  font-size: 1rem;
+  font-weight: 400;
+  background-color: #562b81;
+  color: white;
+  border-style: none;
+  border-radius: 0.3rem;
+  padding: 0.5rem 0.8rem;
+  text-transform: uppercase;
+}
+
+.padding-bottom {
+  padding-bottom: 0.5rem;
+}
+
+.margin-bottom {
+  margin-bottom: 1.5rem;
+}
+
+.padding-top-bottom {
+  padding: 0.5rem 0;
+}
+
+.input-field {
+  font-size: 1rem;
+  padding: 0.4rem 0;
+  outline-color: #562b81;
+}
+
+.text-area {
+  height: 10vh;
+  padding: 0.4rem;
+}
