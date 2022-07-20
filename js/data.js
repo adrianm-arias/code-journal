@@ -8,7 +8,9 @@ var data = {
 };
 
 var previousEntriesJSON = localStorage.getItem('journal-entries-storage');
-data = JSON.parse(previousEntriesJSON);
+if (previousEntriesJSON !== null) {
+  data = JSON.parse(previousEntriesJSON);
+}
 
 // this event stores the object models into local storage
 window.addEventListener('beforeunload', event => {

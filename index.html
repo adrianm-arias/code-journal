@@ -17,15 +17,23 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Proza+Libre:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <header>
     <div class="background-purple">
       <div class="container">
         <div class="row">
-          <div class="column-full">
-            <div class="logo-container">
-              <a href="#" class="logo">Code Journal</a>
+          <div class="column-full flex-row">
+            <div>
+              <p class="logo">Code Journal</p>
+            </div>
+            <div >
+              <a class="nav-link" href="#">Entries</a>
             </div>
           </div>
         </div>
@@ -34,12 +42,12 @@
   </header>
   <main>
     <div class="container">
-      <div class="row">
-        <div class="column-full">
-          <h1 class="title">New Entry</h1>
+      <div data-view="entry-form" id="entry-container" class="show">
+        <div class="row">
+          <div class="column-full">
+            <h1 class="title">New Entry</h1>
+          </div>
         </div>
-      </div>
-      <div data-view="entry-form">
         <form id="entry-form" action="">
           <div class="row">
             <div class="column-half">
@@ -58,7 +66,7 @@
               </div>
             </div>
           </div>
-          <div class="row">
+          <div class="row padding-bottom">
             <div class="column-full flex-column">
               <label for="notes" class="padding-bottom">Notes</label>
               <textarea class="input-field margin-bottom text-area" id="notes" name="notes"></textarea>
@@ -68,6 +76,20 @@
             </div>
           </div>
         </form>
+      </div>
+      <div id="entries-list" data-view="entries" class="show">
+        <div class="row padding-top-bottom">
+          <div class="column-full justify-space-between">
+            <div>
+              <h1 class="title">Entries</h1>
+            </div>
+            <div class="button-container">
+              <button id="button-new" class="button-new">new</button>
+            </div>
+          </div>
+        </div>
+        <ul>
+        </ul>
       </div>
     </div>
   </main>
