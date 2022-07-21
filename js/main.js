@@ -12,24 +12,47 @@ var $entryForm = document.getElementById('entry-form');
 // this event captures the input values and adds them into an object
 $entryForm.addEventListener('submit', event => {
   event.preventDefault();
-  var journalEntry = {};
-  journalEntry.title = $entryForm.elements.title.value;
-  journalEntry.imgUrl = $entryForm.elements.url.value;
-  journalEntry.notes = $entryForm.elements.notes.value;
-  journalEntry.entryId = data.nextEntryId;
-  data.nextEntryId++;
-  var renderNewEntry = renderJournalEntries(journalEntry);
-  var ulElement = document.querySelector('ul');
-  ulElement.prepend(renderNewEntry);
-  data.entries.unshift(journalEntry);
-  $dataEntries.className = 'show';
-  $imgPlaceholder.setAttribute('src', 'images/placeholder-image-square.jpg');
-  $entryForm.reset();
+  if (data.editing === null) {
+    var journalEntry = {};
+    journalEntry.title = $entryForm.elements.title.value;
+    journalEntry.imgUrl = $entryForm.elements.url.value;
+    journalEntry.notes = $entryForm.elements.notes.value;
+    journalEntry.entryId = data.nextEntryId;
+    data.nextEntryId++;
+    var renderNewEntry = renderJournalEntries(journalEntry);
+    var ulElement = document.querySelector('ul');
+    ulElement.prepend(renderNewEntry);
+    data.entries.unshift(journalEntry);
+    $dataEntries.className = 'show';
+    $imgPlaceholder.setAttribute('src', 'images/placeholder-image-square.jpg');
+    $entryForm.reset();
+  } else {
+    data.editing.title = $entryForm.elements.title.value;
+    data.editing.imgUrl = $entryForm.elements.url.value;
+    data.editing.notes = $entryForm.elements.notes.value;
+    for (var i = 0; i < data.entries.length; i++) {
+      if (data.entries[i].entryId === data.editing.entryId) {
+        data.entries[i].title = $entryForm.elements.title.value;
+        data.entries[i].imgUrl = $entryForm.elements.url.value;
+        data.entries[i].notes = $entryForm.elements.notes.value;
+      }
+    }
+    $imgPlaceholder.setAttribute('src', 'images/placeholder-image-square.jpg');
+    $dataEntries.className = 'show';
+    $entryContainer.className = 'hidden';
+    data.editing = null;
+    // $entryForm.reset();
+    // element.remove()
+    // data.entries[i].replaceWith()
+
+  }
+
 });
 
 function renderJournalEntries(entries) {
   var liItem = document.createElement('li');
   var rowDiv = document.createElement('div');
+  liItem.setAttribute('data-entry-id', entries.entryId);
   rowDiv.className = 'row padding-top-bottom';
   liItem.appendChild(rowDiv);
   // journal image dom creation
@@ -47,13 +70,17 @@ function renderJournalEntries(entries) {
   imgContainer.appendChild(img);
   // journal text content dom creation
   var columnDivText = document.createElement('div');
-  columnDivText.className = 'column-half';
+  columnDivText.className = 'column-half pos-rel';
   rowDiv.appendChild(columnDivText);
 
   var entryTitle = document.createElement('h2');
   entryTitle.className = 'entry-title padding-top-bottom';
   entryTitle.textContent = entries.title;
   columnDivText.appendChild(entryTitle);
+
+  var editIcon = document.createElement('i');
+  editIcon.className = 'fa-solid fa-pencil edit-icon';
+  columnDivText.appendChild(editIcon);
 
   var entryNotes = document.createElement('p');
   entryNotes.className = 'entry-notes padding-top-bottom';
@@ -118,5 +145,27 @@ document.addEventListener('DOMContentLoaded', event => {
   } else if (viewFormParse === 'hidden' && dataFormParse === 'show') {
     $dataEntries.className = 'show';
     $entryContainer.className = 'hidden';
+  }
+});
+
+var $renderedList = document.querySelector('ul');
+
+var $editingTitle = document.querySelector('h1');
+
+$renderedList.addEventListener('click', function (event) {
+  if (event.target && event.target.matches('I')) {
+    $entryContainer.className = 'show';
+    $editingTitle.textContent = 'Edit Entry';
+    $dataEntries.className = 'hidden';
+    var targetId = event.target.closest('li');
+    for (var i = 0; i < data.entries.length; i++) {
+      if (data.entries[i].entryId === Number(targetId.getAttribute('data-entry-id'))) {
+        data.editing = data.entries[i];
+        $entryForm.elements.title.value = data.editing.title;
+        $entryForm.elements.url.value = data.editing.imgUrl;
+        $entryForm.elements.notes.value = data.editing.notes;
+        $imgPlaceholder.setAttribute('src', data.editing.imgUrl);
+      }
+    }
   }
 });

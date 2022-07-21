@@ -135,3 +135,17 @@ ul {
   text-transform: uppercase;
   cursor: pointer;
 }
+
+.edit-icon {
+  font-size: 1.4rem;
+  margin-left: auto;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  color: #562b81;
+  cursor: pointer;
+}
+
+.pos-rel {
+  position: relative;
+}
