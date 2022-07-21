@@ -41,6 +41,8 @@ $entryForm.addEventListener('submit', event => {
     $dataEntries.className = 'show';
     $entryContainer.className = 'hidden';
     data.editing = null;
+
+    // fix issues with data only showing after page reload
     // $entryForm.reset();
     // element.remove()
     // data.entries[i].replaceWith()
