@@ -38,13 +38,12 @@ $entryForm.addEventListener('submit', event => {
       }
     }
     $imgPlaceholder.setAttribute('src', 'images/placeholder-image-square.jpg');
-    $dataEntries.className = 'show';
+    $entryForm.reset();
     $entryContainer.className = 'hidden';
     data.editing = null;
-    // $entryForm.reset();
-    // element.remove()
-    // data.entries[i].replaceWith()
-
+    document.querySelectorAll('li').forEach(e => e.remove());
+    entriesArray();
+    $dataEntries.className = 'show';
   }
 
 });
