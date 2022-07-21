@@ -180,17 +180,14 @@ var $cancelButton = document.querySelector('.button-cancel');
 var $confirmButton = document.querySelector('.button-confirm');
 
 $deleteButton.addEventListener('click', function (event) {
-  event.preventDefault();
   $modalDiv.className = 'row pos-rel show';
 });
 
 $cancelButton.addEventListener('click', function (event) {
-  event.preventDefault();
   $modalDiv.className = 'row pos-rel hidden';
 });
 
 $confirmButton.addEventListener('click', function (event) {
-  event.preventDefault();
   for (var i = 0; i < data.entries.length; i++) {
     if (data.entries[i].entryId === data.editing.entryId) {
       data.entries.splice(i, 1);
