@@ -70,7 +70,8 @@
             <div class="column-full flex-column">
               <label for="notes" class="padding-bottom">Notes</label>
               <textarea class="input-field margin-bottom text-area" id="notes" name="notes"></textarea>
-              <div class="button-container flex-column">
+              <div class="button-container justify-space-between">
+                <a class="button-delete hidden" href="">Delete Entry</a>
                 <button class="button-save">save</button>
               </div>
             </div>
@@ -90,6 +91,17 @@
         </div>
         <ul>
         </ul>
+      </div>
+    </div>
+    <div id="modal" class="row pos-rel hidden">
+      <div class="column-full transparent-background window-full-height pos-fixed flex-row justify-center">
+        <div class="modal-container flex-column">
+          <p class="modal-text">Are you sure you want to delete this entry?</p>
+          <div class="button-container flex-row justify-space-between">
+            <div><button class="button-cancel">cancel</button></div>
+            <div><button class="button-confirm">confirm</button></div>
+          </div>
+        </div>
       </div>
     </div>
   </main>

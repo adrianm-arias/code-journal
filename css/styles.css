@@ -23,6 +23,7 @@ body {
 img {
   width: 100%;
   object-fit: cover;
+  border-radius: 0.5rem;
 }
 
 .placeholder-img {
@@ -77,6 +78,10 @@ img {
 .text-area {
   height: 10vh;
   padding: 0.4rem;
+}
+
+.justify-center {
+  justify-content: center;
 }
 
 .justify-space-between {
@@ -148,4 +153,59 @@ ul {
 
 .pos-rel {
   position: relative;
+}
+
+.button-delete {
+  color: #dc2626;
+  font-weight: 400;
+  font-size: 0.9rem;
+}
+
+.button-confirm {
+  margin-right: 0;
+  font-size: 1rem;
+  font-weight: 400;
+  background-color: #dc2626;
+  color: white;
+  border-style: none;
+  border-radius: 0.3rem;
+  padding: 0.5rem 0.8rem;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.button-cancel {
+  margin-left: auto;
+  font-size: 1rem;
+  font-weight: 400;
+  background-color: #b6b6b6;
+  color: #292929;
+  border-style: none;
+  border-radius: 0.3rem;
+  padding: 0.5rem 0.8rem;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.transparent-background {
+  background-color: #323232a1;
+}
+
+.window-full-height {
+  height: 100vh;
+}
+
+.pos-fixed {
+  position: fixed;
+  top: 0;
+}
+
+.modal-container {
+  background-color: white;
+  border-radius: 0.3rem;
+  padding: 1rem;
+}
+
+.modal-text {
+  padding-bottom: 1rem;
 }
